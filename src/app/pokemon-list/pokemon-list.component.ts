@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { ApiService } from '../services/api.service';
 
@@ -32,7 +33,7 @@ export class PokemonListComponent implements OnInit {
   types: string[] = [];
   offset = 0;
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router, private changeDetectorRef: ChangeDetectorRef) {}
 
   /** 
    * This is the place where api is being called.
@@ -65,7 +66,9 @@ export class PokemonListComponent implements OnInit {
                 sprite: details.sprites.front_default,
                 types: details.types.map((t: any) => t.type.name).join(', '),
               }));
+              // this.changeDetectorRef.detectChanges();
               let types: any[] = []
+              this.filteredDataSource.data = this.dataSource.data;
               this.dataSource.data.filter((poke) => {
                 types.push(poke.types)
               })
@@ -81,11 +84,12 @@ export class PokemonListComponent implements OnInit {
   }
 
   /**
-   * OnPageChange will be triggered while changing the page in pagination
+   * OnPageChange will be triggered while changing the page using pagination
    *
    * @param {*} event
    */
   onPageChange(event: any): void {
+    console.log(event.pageIndex, this.pageSize)
     this.offset = event.pageIndex * this.pageSize;
     this.fetchData();
   }
