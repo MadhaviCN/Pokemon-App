@@ -10,11 +10,9 @@ To run this application in the local. Please follow the steps.
 3. Steps to run application - Open the terminal 
     1. Clone the repository using below command
         *  git clone 'repository url'
-    2. Navigate to the project directory
-        * cd Pokemon-App/
-    3. Install npm package
+    2. Install npm package
         * npm i
-    4. Run the application
+    3. Run the application
         * ng serve
         * this will automatically opens in browser with an url localhost:4200
 
