@@ -1,0 +1,14 @@
+<div class="details-container">
+    <button [routerLink]="'/'">Back to List</button>
+    <img [src]="pokemon?.sprite" alt="{{ pokemon?.name }}" />
+    <h1>{{ pokemon?.name}}</h1>
+    <div class="types">
+        <p>Types: {{ pokemon?.types}}</p>
+    </div>
+    <div class="abilities">
+        <p>Abilities: {{ pokemon?.abilities }}</p>
+    </div>
+    <div class="abilities">
+        <p>Stats: {{ pokemon?.stats}}</p>
+    </div>    
+</div>

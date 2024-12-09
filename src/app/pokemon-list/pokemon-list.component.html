@@ -1,0 +1,56 @@
+
+<div *ngIf="dataSource.data.length === 0">Loading...</div>
+<div *ngIf="dataSource.data.length > 0" class="search-container">
+    <mat-form-field>
+      <mat-label>Search Pokémon</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (input)="filterByName()" placeholder="Enter Pokémon name" />
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="type-filter">
+      <mat-label>Filter by Type</mat-label>
+      <mat-select [(value)]="selectedType" (selectionChange)="filterByType($event)">
+        <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+        <mat-option value="">All types</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+  
+  <mat-table [dataSource]="filteredDataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef > ID </mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index">
+        {{ i + 1 }}
+      </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a>{{ element.name }}</a>
+      </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="types">
+      <mat-header-cell *matHeaderCellDef> Types </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.types}}
+      </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="sprite">
+      <mat-header-cell *matHeaderCellDef> Sprite </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [routerLink]="['/pokemon', element.name]" [src]="element?.sprite" alt="{{ element.name }}" />
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="pokemonDetailsPage(row)"></mat-row>
+  </mat-table>
+  
+  <mat-paginator
+  [length]="totalCount"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange($event)"
+></mat-paginator>
