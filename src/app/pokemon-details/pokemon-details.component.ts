@@ -40,9 +40,9 @@ export class PokemonDetailsComponent implements OnInit {
         this.pokemon = {
           name: data.name,
           sprite: data.sprites.front_default,
-          types: data.types.map((t: any) => t.type.name).join(','),
-          abilities: data.abilities.map((a: any) => a.ability.name).join(','),
-          stats:data.stats.map((s: any) => s.stat.name).join(',')
+          types: data.types.map((t: any) => t.type.name).join(', '),
+          abilities: data.abilities.map((a: any) => a.ability.name).join(', '),
+          stats:data.stats.map((s: any) => s.stat.name).join(', ')
         };
       }, (error) => {
         console.error(error)

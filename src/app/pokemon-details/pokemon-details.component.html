@@ -3,12 +3,15 @@
     <img [src]="pokemon?.sprite" alt="{{ pokemon?.name }}" />
     <h1>{{ pokemon?.name}}</h1>
     <div class="types">
-        <p>Types: {{ pokemon?.types}}</p>
+        <label>Types: </label>
+        <p>{{ pokemon?.types}}</p>
     </div>
     <div class="abilities">
-        <p>Abilities: {{ pokemon?.abilities }}</p>
+        <label>Abilities: </label>
+        <p>{{ pokemon?.abilities}}</p>
     </div>
     <div class="abilities">
-        <p>Stats: {{ pokemon?.stats}}</p>
+        <label>Stats: </label>
+        <p>{{ pokemon?.stats}}</p>
     </div>    
 </div>

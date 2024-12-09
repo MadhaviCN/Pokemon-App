@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { ApiService } from './services/api.service';
 
@@ -33,7 +36,10 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    MatDividerModule,
+    MatChipsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
