@@ -5,14 +5,6 @@ import { ApiService } from '../services/api.service';
 import { of, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
-const mockApiService = {
-  getPokemonDetails: jasmine.createSpy().and.returnValue(of({
-    name: 'bulbasaur',
-    abilities: [{ ability: { name: 'chlorophyll' } }, { ability: { name: 'overgrow' } }],
-    stats: [{ stat: { name: 'hp' }, base_stat: 45 }, { stat: { name: 'attack' }, base_stat: 49 }],
-    sprites: { front_default: 'bulbasaur_sprite_url' },
-  }))
-};
 
 describe('PokemonDetailsComponent', () => {
   let component: PokemonDetailsComponent;

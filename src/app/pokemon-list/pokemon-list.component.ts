@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
-import { ChangeDetectorRef } from '@angular/core';
 
 import { ApiService } from '../services/api.service';
 
@@ -33,7 +32,7 @@ export class PokemonListComponent implements OnInit {
   types: string[] = [];
   offset = 0;
 
-  constructor(private apiService: ApiService, private router: Router, private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   /** 
    * This is the place where api is being called.
@@ -66,7 +65,6 @@ export class PokemonListComponent implements OnInit {
                 sprite: details.sprites.front_default,
                 types: details.types.map((t: any) => t.type.name).join(', '),
               }));
-              // this.changeDetectorRef.detectChanges();
               let types: any[] = []
               this.filteredDataSource.data = this.dataSource.data;
               this.dataSource.data.filter((poke) => {
