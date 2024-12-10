@@ -40,7 +40,7 @@
     <ng-container matColumnDef="sprite">
       <mat-header-cell *matHeaderCellDef> Sprite </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <img [routerLink]="['/pokemon', element.name]" [src]="element?.sprite" alt="{{ element.name }}" />
+        <img [src]="element?.sprite" alt="{{ element.name }}" />
       </mat-cell>
     </ng-container>
   

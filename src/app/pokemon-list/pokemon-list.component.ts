@@ -51,12 +51,12 @@ export class PokemonListComponent implements OnInit {
         next: (data) => {
           this.totalCount = data.count;
   
-          // Map the results and make additional API calls for each Pokémon
+          // Map the results and make additional API calls for each Pokemon
           const pokemonRequests: Observable<any>[] = data.results.map((pokemon: any) =>
            this.apiService.getPokemonDetails(pokemon.name)
           );
   
-          // Use forkJoin to fetch details for all Pokémon concurrently
+          // Use forkJoin to fetch details for all Pokemon
           forkJoin(pokemonRequests).subscribe({
             next: (pokemonDetails: any[]) => {
               this.dataSource.data = pokemonDetails.map((details) => ({
@@ -87,7 +87,6 @@ export class PokemonListComponent implements OnInit {
    * @param {*} event
    */
   onPageChange(event: any): void {
-    console.log(event.pageIndex, this.pageSize)
     this.offset = event.pageIndex * this.pageSize;
     this.fetchData();
   }

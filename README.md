@@ -18,5 +18,5 @@ To run this application in the local. Please follow the steps.
 
 4. Steps to run tests - navigate to Pokemon-App folder
     1. npm test --coverage
-    2. This will display the test coverage
+    2. This will display the test coverage, also creates a covergae folder wherein we can check covergae in the browser using index.html page
         
