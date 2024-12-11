@@ -27,6 +27,7 @@ export class PokemonListComponent implements OnInit {
   filteredDataSource = new MatTableDataSource<any>()
   totalCount = 0;
   pageSize = 10;
+  pageSizeOptions: number = 0
   searchQuery:string = '';
   selectedType: string | null = null;
   types: string[] = [];
@@ -86,7 +87,8 @@ export class PokemonListComponent implements OnInit {
    * @param {*} event
    */
   onPageChange(event: any): void {
-    this.offset = event.pageIndex * this.pageSize;
+    this.offset = event.pageIndex * event.pageSize;
+    this.pageSize = event.pageSize
     this.fetchData();
   }
 
