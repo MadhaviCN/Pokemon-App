@@ -39,11 +39,12 @@ export class PokemonDetailsComponent implements OnInit {
       this.apiService.getPokemonDetails(name).subscribe((data) => {
         this.pokemon = {
           name: data.name,
-          sprite: data.sprites.front_default,
+          sprite: data.sprites.other.dream_world.front_default,
           types: data.types.map((t: any) => t.type.name).join(', '),
           abilities: data.abilities.map((a: any) => a.ability.name).join(', '),
           stats:data.stats.map((s: any) => s.stat.name).join(', ')
         };
+        console.log("sprite", this.pokemon.sprite)
       }, (error) => {
         console.error(error)
       });
