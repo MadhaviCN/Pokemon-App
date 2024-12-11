@@ -63,15 +63,14 @@ export class PokemonListComponent implements OnInit {
                 id: details.id,
                 name: details.name,
                 sprite: details.sprites.front_default,
-                types: details.types.map((t: any) => t.type.name).join(', '),
+                types: details.types.map((t: any) => t.type.name),
               }));
               let types: any[] = []
               this.filteredDataSource.data = this.dataSource.data;
               this.dataSource.data.filter((poke) => {
                 types.push(poke.types)
               })
-              const properArray = types
-              .map(item => item.split(',').map((type: string) => type.trim())).flat(); 
+              const properArray  = types.flat()
               this.types = [...new Set(properArray)]
             },
             error: (error) => {
@@ -120,7 +119,7 @@ export class PokemonListComponent implements OnInit {
     }
     if(this.selectedType) {
       filterData = filterData.filter((pokemon) => {
-        return pokemon.types.split(',').includes(this.selectedType)
+        return pokemon.types.includes(this.selectedType)
       })
     }
     this.filteredDataSource.data = filterData
